@@ -29,10 +29,10 @@ int main(int argc, char** argv){
   while (node.ok()){
     geometry_msgs::TransformStamped transformStamped;
     try{
-      // transformStamped = tfBuffer.lookupTransform("turtle2", "turtle1",
-      //                          ros::Time(0));
-      transformStamped = tfBuffer.lookupTransform("map", "base_link",
+      transformStamped = tfBuffer.lookupTransform("turtle2", "turtle1",
                                ros::Time(0));
+      // transformStamped = tfBuffer.lookupTransform("map", "base_link",
+      //                          ros::Time(0));
     }
     catch (tf2::TransformException &ex) {
       ROS_WARN("%s",ex.what());
