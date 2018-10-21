@@ -56,6 +56,13 @@ int main(int argc, char **argv)
                                     transformStamped.transform.translation.x);
     vel_msg.linear.x = 0.5 * sqrt(pow(transformStamped.transform.translation.x, 2) +
                                   pow(transformStamped.transform.translation.y, 2));
+
+    if (vel_msg.linear.x < 0.08)
+    {
+      vel_msg.linear.x = 0;
+      vel_msg.angular.z = 0.8 *transformStamped.transform.rotation.z;
+    }
+    
     turtle_vel.publish(vel_msg);
 
     rate.sleep();
